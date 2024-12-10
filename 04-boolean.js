@@ -23,3 +23,19 @@ let b1 = a > b;     //  비교 연산의 결과
 let b2 = b >= 0 && b <= 10; //  논리 연산의 결과
 // 논리 연산자 :   AND(&&), OR(||), NOT(!) ->  논리 결과 조합
 console.log(b1,b2);
+
+console.log("=========================================================");
+// Boolean 타입 함수를 이용한 Boolean 판정
+// Number   :   
+// String   :   내용이 있으면 true,  빈 문자일이면 false
+console.log(Boolean("ECMAScript"), Boolean(""));
+console.log(Boolean(2024), Boolean(0));
+
+// ShortCircuit(단전)
+console.log(true && "Test");
+console.log(false && "Test");
+
+console.log(true || "Test");
+console.log(false || "Test");
+
+// React의 선택적 렌더링에 많이 활용
