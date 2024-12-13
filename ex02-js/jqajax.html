@@ -23,6 +23,27 @@
             alert("코드 조각을 불러옵니다.");
 
             // ajax로 코드 조각 불러오기
+            $.ajax({
+                url: "snippet.html",    //  URL
+                type: "GET",            //  요청방식
+                // data:                   //  전송할 데이터
+                dataType: "text",        // 응답으로 받을 데이터형식
+                success: function(response) {
+                    // 요청 성공 시 콜백
+                    // response    :   서버가 보내준 데이터
+                    console.log("response: ", response);
+                    // #info에 콘텐츠로 추가
+                    $("#info").html(response);                    
+                },
+                error: function(request, status, error) {
+                    //  request: 요청 정보
+                    //  status: 응답 상태 (200 -> OK)  
+                    //  error: 에러 정보
+                    console.log("STATUS:", status);
+                    console.error("ERROR:", error);
+                    console.error("REQUEST:", request);
+                }
+            })
         })
     })
 </script>
