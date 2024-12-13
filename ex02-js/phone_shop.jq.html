@@ -99,6 +99,12 @@
             // src 속성, title 속성을 -> #product-info h2로 이전
             let h2 = $("#product-info h2");
         })
+        $("#keyword").on("keyup", event => {
+            let input = $(event.target);   //  이벤트 발생 객체
+            
+            let btn = $("#btn-search");
+            btn.text(input.val() + ":검색");
+        })
     })
 </script>
 </html>
