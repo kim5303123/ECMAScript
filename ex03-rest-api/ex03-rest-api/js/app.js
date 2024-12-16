@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", function () {
             .then(data => {
                 // 기존의 todolist 비우기
                 todoList.innerHTML ="";
-                
+
                 console.log("data: ", data);
                 data.forEach(todo => {                    
                     // 아이템을 DOM에 추가
@@ -41,7 +41,30 @@ document.addEventListener("DOMContentLoaded", function () {
     // Add new TODO
     //  새로운 todo를 추가하는 이벤트 핸들러 연결
     addTodoButton.addEventListener("click", (event) => {
-        //
+        // #new-todo 입력 상자의 값을 가지고 와서
+        // 새 todo item 항목을 만들어서 서버로 전송( post 방식 )
+        const title = newTodoInput.value.trim();
+
+        if(title) {
+            // 서버로 전송
+            fetch(apiUrl, {
+                method: "POST", //  생성
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    title: title,
+                    completed: false
+                })
+            })
+            .then((response) => response.json())
+            .then(todo => {
+                addTodoToDOM(todo);
+                newTodoInput.value = "";
+            })
+            .catch(error => console.error("Error adding TODO: ", error));
+        }
+        newTodoInput.focus();
     });
 
     // Delete TODO
